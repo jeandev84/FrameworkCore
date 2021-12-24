@@ -1,0 +1,59 @@
+# GIT
+echo "# FrameworkCore" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M master
+git remote add origin git@github.com:jeandev84/FrameworkCore.git
+git push -u origin master
+
+# Composer
+
+composer init
+
+
+Welcome to the Composer config generator
+
+
+
+This command will guide you through creating your composer.json config.
+
+Package name (<vendor>/<name>) [yao/framework]: jeanklod/frameworkcore
+Description []: A simple PHP framework for building web application
+Author [jeandev84 <jeandev84@yahoo.com>, n to skip]:
+Minimum Stability []: alpha
+Package Type (e.g. library, project, metapackage, composer-plugin) []: library
+License []: MIT
+
+Define your dependencies.
+
+Would you like to define your dependencies (require) interactively [yes]? no
+Would you like to define your dev dependencies (require-dev) interactively [yes]? no
+Add PSR-4 autoload mapping? Maps namespace "Jeanklod\Frameworkcore" to the entered relative path. [src/, n to skip]:
+
+{
+    "name": "jeanklod/frameworkcore",
+    "description": "A simple PHP framework for building web application",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Jeanklod\\Frameworkcore\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "jeandev84",
+            "email": "jeandev84@yahoo.com"
+        }
+    ],
+    "minimum-stability": "alpha",
+    "require": {}
+}
+
+Do you confirm generation [yes]? yes
+Generating autoload files
+Generated autoload files
+Would you like the vendor directory added to your .gitignore [yes]? yes
+PSR-4 autoloading configured. Use "namespace Jeanklod\Frameworkcore;" in src/
+Include the Composer autoloader with: require 'vendor/autoload.php';
