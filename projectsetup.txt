@@ -1,4 +1,4 @@
-# GIT
+1. GIT
 echo "# FrameworkCore" >> README.md
 git init
 git add README.md
@@ -7,7 +7,7 @@ git branch -M master
 git remote add origin git@github.com:jeandev84/FrameworkCore.git
 git push -u origin master
 
-# Composer
+2. Composer
 
 composer init
 
@@ -57,3 +57,51 @@ Generated autoload files
 Would you like the vendor directory added to your .gitignore [yes]? yes
 PSR-4 autoloading configured. Use "namespace Jeanklod\Frameworkcore;" in src/
 Include the Composer autoloader with: require 'vendor/autoload.php';
+
+
+3. Complete some configuration for composer.json
+
+{
+    "name": "jeanklod/frameworkcore",
+    "description": "A simple PHP framework for building web application",
+    "keywords": ["framework", "php", "frameworkcore"],
+    "type": "library",
+    "license": "MIT",
+    "readme": "",
+    "time": "",
+    "support": {
+        "issues": "https://github.com/jeandev84/FrameworkCore/issues",
+        "source": "https://github.com/jeandev84/FrameworkCore",
+        "wiki": "https://github.com/jeandev84/FrameworkCore/wiki"
+    },
+    "authors": [
+        {
+            "name": "jeandev84",
+            "email": "jeandev84@yahoo.com",
+            "role": "Developer"
+        }
+    ],
+    "minimum-stability": "alpha",
+    "require": {
+        "php": "7.4.2|^8.0",
+        "ext-mbstring": "*",
+        "ext-iconv": "*",
+        "ext-pdo": "*",
+        "ext-json": "*",
+        "ext-curl": "*",
+        "ext-simplexml": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Framework\\": "src/Framework"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Framework\\Tests": "tests/"
+        }
+    }
+}
+
+
+

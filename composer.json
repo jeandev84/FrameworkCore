@@ -1,14 +1,41 @@
 {
     "name": "jeanklod/frameworkcore",
     "description": "A simple PHP framework for building web application",
+    "keywords": ["framework", "php", "frameworkcore"],
     "type": "library",
     "license": "MIT",
+    "readme": "",
+    "time": "",
+    "support": {
+        "issues": "https://github.com/jeandev84/FrameworkCore/issues",
+        "source": "https://github.com/jeandev84/FrameworkCore",
+        "wiki": "https://github.com/jeandev84/FrameworkCore/wiki"
+    },
     "authors": [
         {
             "name": "jeandev84",
-            "email": "jeandev84@yahoo.com"
+            "email": "jeandev84@yahoo.com",
+            "role": "Developer"
         }
     ],
     "minimum-stability": "alpha",
-    "require": {}
+    "require": {
+        "php": "7.4.2|^8.0",
+        "ext-mbstring": "*",
+        "ext-iconv": "*",
+        "ext-pdo": "*",
+        "ext-json": "*",
+        "ext-curl": "*",
+        "ext-simplexml": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Framework\\": "src/Framework"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Framework\\Tests": "tests/"
+        }
+    }
 }
