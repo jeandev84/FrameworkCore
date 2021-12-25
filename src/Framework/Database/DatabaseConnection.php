@@ -7,6 +7,7 @@ namespace Framework\Database;
 use Exception;
 use Framework\Database\Exception\DatabaseConnectionException;
 use PDO;
+use PDOException;
 
 /**
  * @DatabaseConnection
@@ -65,7 +66,7 @@ class DatabaseConnection implements DatabaseConnectionInterface
                 $params
             );
 
-        } catch (Exception $e) {
+        } catch (PDOException $e) {
 
             throw new DatabaseConnectionException($e->getMessage(), (int)$e->getCode());
         }
