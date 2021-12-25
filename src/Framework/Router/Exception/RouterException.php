@@ -2,12 +2,13 @@
 namespace Framework\Router\Exception;
 
 
+
 /**
  * @RouterException
  *
  * @package Framework\Router\Exception
 */
-class RouterException
+class RouterException extends \Exception
 {
 
 }

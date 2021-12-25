@@ -4,6 +4,8 @@ declare(strict_types=1);
 namespace Framework\Database;
 
 
+use PDO;
+
 /**
  * @DatabaseConnectionInterface
  *
@@ -14,9 +16,9 @@ interface DatabaseConnectionInterface
       /**
         * Create a new database connection
         *
-        * @return \PDO
+        * @return PDO
       */
-      public function open(): \PDO;
+      public function open(): PDO;
 
 
 
