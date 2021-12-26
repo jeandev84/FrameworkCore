@@ -1,19 +1,20 @@
 <?php
 declare(strict_types=1);
 
-namespace Framework\LiquidOrm;
+namespace Framework\LiquidOrm\DataMapper;
 
 
 use Framework\Database\DatabaseConnectionInterface;
-use Framework\LiquidOrm\Exception\DataMapperException;
+use Framework\LiquidOrm\DataMapper\Exception\DataMapperException;
 use PDO;
 use PDOStatement;
+use Throwable;
 
 
 /**
  * @DataMapper
  *
- * @Framework\LiquidOrm
+ * @package Framework\LiquidOrm\DataMapper
 */
 class DataMapper implements DataMapperInterface
 {
@@ -116,6 +117,9 @@ class DataMapper implements DataMapperInterface
 
 
     /**
+     * Binds a value to a corresponding name or question mark placeholder in the SQL
+     * statement that was used to prepare the statement
+     *
      * @param array $fields
      * @return PDOStatement
      * @throws DataMapperException
@@ -213,6 +217,28 @@ class DataMapper implements DataMapperInterface
     {
         if ($this->statement) {
             $this->statement->fetchAll();
+        }
+    }
+
+
+
+    /**
+     * @inheritDoc
+     * @throws Throwable
+    */
+    public function getLastId(): int
+    {
+        try {
+
+             if ($this->dbh->open()) {
+                 $lastID = $this->dbh->open()->lastInsertId();
+
+                 if (! empty($lastID)) {
+                     return intval($lastID); // intval() return a integer value
+                 }
+             }
+        } catch (Throwable $e) {
+            throw $e;
         }
     }
 }

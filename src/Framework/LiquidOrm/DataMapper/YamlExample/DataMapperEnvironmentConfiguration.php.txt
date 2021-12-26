@@ -1,0 +1,66 @@
+<?php
+declare(strict_types=1);
+
+
+namespace Framework\LiquidOrm;
+
+
+/**
+ * @DataMapperEnvironmentConfiguration
+ *
+ * @package  Framework\LiquidOrm
+*/
+class DataMapperEnvironmentConfiguration
+{
+
+       /**
+        * @var array
+       */
+       private array $credentials = [];
+
+
+       /**
+        * Main construct class
+        *
+        * @param array $credentials
+        * @return void
+       */
+       public function __construct(array $credentials)
+       {
+            $this->credentials = $credentials;
+       }
+
+
+       /**
+        *
+        * populate credentials
+        *
+        * @param string $driver
+        * @return array
+       */
+       public function getDatabaseCredentials(string $driver): array
+       {
+            $connectionArray = [];
+
+            $credentials = [
+               "mysql" => [
+                   "dsn" => "mysql:host=localhost",
+                   "username" => "test",
+                   "password" => "1234"
+               ],
+               "pgsql" => [
+                   "dsn" => "pgsql:host=localhost",
+                   "username" => "test",
+                   "password" => "1246"
+               ]
+            ];
+
+            foreach ($this->credentials as $credentials) {
+                if (array_key_exists($driver, $credentials)) {
+                    $connectionArray = $credentials[$driver];
+                }
+            }
+
+            return $connectionArray;
+       }
+}

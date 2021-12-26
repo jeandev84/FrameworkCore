@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Framework\LiquidOrm;
+namespace Framework\LiquidOrm\DataMapper;
 
 
 use Throwable;
@@ -9,7 +9,7 @@ use Throwable;
 /**
  * @DataMapperInterface
  *
- * @package Framework\LiquidOrm
+ * @package Framework\LiquidOrm\DataMapper
 */
 interface DataMapperInterface
 {
