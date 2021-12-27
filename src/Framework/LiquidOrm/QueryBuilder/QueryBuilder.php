@@ -42,7 +42,8 @@ class QueryBuilder implements QueryBuilderInterface
         'select',
         'update',
         'delete',
-        'raw'
+        'raw',
+        'search'
     ];
 
 
@@ -174,6 +175,14 @@ class QueryBuilder implements QueryBuilderInterface
         }
 
         return $this->sqlQuery;
+    }
+
+
+
+
+    public function searchQuery(): string
+    {
+
     }
 
 
