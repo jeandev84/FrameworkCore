@@ -94,15 +94,13 @@ interface CrudInterface
     public function search(array $selectors = [], array $conditions = []): array;
 
 
-
-
     /**
      * Returns a custom query string. The second argument can assign and associate array
      * of conditions for the query string
      *
      * @param string $rawQuery
-     * @param array $conditions
+     * @param array|null $conditions
      * @return mixed
-    */
-    public function rawQuery(string $rawQuery, array $conditions = []);
+     */
+    public function rawQuery(string $rawQuery, ?array $conditions = []);
 }

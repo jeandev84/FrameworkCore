@@ -38,6 +38,8 @@ class Crud implements CrudInterface
 
 
     /**
+     * Main constructor
+     *
      * @param DataMapper $dataMapper
      * @param QueryBuilder $queryBuilder
      * @param string $tableSchema
@@ -84,11 +86,13 @@ class Crud implements CrudInterface
     }
 
 
-
-
     /**
      * @inheritDoc
-     */
+     *
+     * @param array $fields
+     * @return bool
+     * @throws Throwable
+    */
     public function create(array $fields = []): bool
     {
         try {
@@ -115,10 +119,16 @@ class Crud implements CrudInterface
 
 
 
-
     /**
      * @inheritDoc
-     */
+     *
+     * @param array $selectors
+     * @param array $conditions
+     * @param array $parameters
+     * @param array $optional
+     * @return array
+     * @throws Throwable
+    */
     public function read(array $selectors = [], array $conditions = [], array $parameters = [], array $optional = []): array
     {
         try {
@@ -154,6 +164,11 @@ class Crud implements CrudInterface
 
     /**
      * @inheritDoc
+     *
+     * @param array $fields
+     * @param string $primaryKey
+     * @return bool
+     * @throws Throwable
     */
     public function update(array $fields = [], string $primaryKey = 'id'): bool
     {
@@ -183,9 +198,14 @@ class Crud implements CrudInterface
 
 
 
+
     /**
      * @inheritDoc
-    */
+     *
+     * @param array $conditions
+     * @return bool
+     * @throws Throwable
+     */
     public function delete(array $conditions = []): bool
     {
         try {
@@ -216,7 +236,12 @@ class Crud implements CrudInterface
 
     /**
      * @inheritDoc
-     */
+     *
+     * @param array $selectors
+     * @param array $conditions
+     * @return array
+     * @throws Throwable
+    */
     public function search(array $selectors = [], array $conditions = []): array
     {
         try {
@@ -245,11 +270,37 @@ class Crud implements CrudInterface
 
 
 
+
     /**
      * @inheritDoc
+     *
+     * @param string $rawQuery
+     * @param array|null $conditions
+     * @return array|void
     */
-    public function rawQuery(string $rawQuery, array $conditions = [])
+    public function rawQuery(string $rawQuery, ?array $conditions = [])
     {
-        // TODO: Implement rawQuery() method.
+        try {
+
+            $args = [
+                'table' => $this->getSchema(),
+                'type'  => 'raw',
+                'raw'   => $rawQuery,
+                'conditions' => $conditions
+            ];
+
+            $query = $this->queryBuilder->buildQuery($args)->rawQuery();
+
+            $this->dataMapper->persist($query, $this->dataMapper->buildQueryParameters($conditions));
+
+            if ($this->dataMapper->numRows() > 0) {
+                return $this->dataMapper->results();
+            }
+
+            return [];
+
+        } catch (Throwable $e) {
+            throw $e;
+        }
     }
 }
