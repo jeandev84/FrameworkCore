@@ -11,7 +11,7 @@ interface CrudInterface
 {
 
     /**
-     * Get database table name
+     * Returns the storage schema name as string (name of table)
      *
      * @return string
     */
@@ -21,7 +21,7 @@ interface CrudInterface
 
 
     /**
-     * Get the name of primary key column of database table
+     * Returns the primary key for storage schema
      *
      * @return string
     */
@@ -30,7 +30,7 @@ interface CrudInterface
 
 
     /**
-     * Last Id returned query statement
+     * Returns the last inserted ID
      *
      * @return int
     */
@@ -39,7 +39,7 @@ interface CrudInterface
 
 
     /**
-     * Create record to the specific table
+     * Create method which inserts data within a storage table
      *
      * @param array $fields
      * @return bool
@@ -49,7 +49,7 @@ interface CrudInterface
 
 
     /**
-     * Select record by given arguments
+     * Returns an array of database rows based on the individual supplied argument
      *
      * @param array $selectors
      * @param array $conditions
@@ -62,7 +62,7 @@ interface CrudInterface
 
 
     /**
-     * Update record of table
+     * Update method which update 1 or more rows of data with in the storage table
      *
      * @param array $fields
      * @param string $primaryKey
@@ -74,7 +74,7 @@ interface CrudInterface
 
 
     /**
-     * Delete table record
+     * Delete method which will permanently delete a row from the storage table
      *
      * @param array $conditions
      * @return bool
@@ -85,7 +85,7 @@ interface CrudInterface
 
 
     /**
-     * Search functionalities
+     * Search method which returns queried search results
      *
      * @param array $selectors
      * @param array $conditions
@@ -97,7 +97,8 @@ interface CrudInterface
 
 
     /**
-     * Helper function for execute query
+     * Returns a custom query string. The second argument can assign and associate array
+     * of conditions for the query string
      *
      * @param string $rawQuery
      * @param array $conditions

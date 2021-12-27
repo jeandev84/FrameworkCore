@@ -244,9 +244,12 @@ class DataMapper implements DataMapperInterface
     }
 
 
-
-
-    public function buildQueryParameters(array $conditions, array $parameters = [])
+    /**
+     * @param array $conditions
+     * @param array $parameters
+     * @return array
+    */
+    public function buildQueryParameters(array $conditions = [], array $parameters = []): array
     {
          return (! empty($parameters) || ! empty($conditions)) ? array_merge($conditions, $parameters) : $parameters;
     }
@@ -262,7 +265,7 @@ class DataMapper implements DataMapperInterface
     {
         try {
 
-            $parameters = $this->buildQueryParameters($parameters);
+            /* $parameters = $this->buildQueryParameters($parameters); */
 
             $this->prepare($sqlQuery)->bindParameters($parameters)->execute();
 

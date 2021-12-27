@@ -97,8 +97,9 @@ class Crud implements CrudInterface
 
             $query = $this->queryBuilder->buildQuery($args)->insertQuery();
 
-            /* $this->dataMapper->persist($query, $this->dataMapper->buildQueryParameters($fields)); */
-            $this->dataMapper->persist($query, $fields);
+            $this->dataMapper->persist($query, $this->dataMapper->buildQueryParameters($fields));
+
+            /* $this->dataMapper->persist($query, $fields); */
 
             if ($this->dataMapper->numRows() == 1) {
                 return true;
@@ -133,9 +134,9 @@ class Crud implements CrudInterface
 
             $query = $this->queryBuilder->buildQuery($args)->selectQuery();
 
-            /* $this->dataMapper->persist($query, $this->dataMapper->buildQueryParameters($conditions)); */
+            $this->dataMapper->persist($query, $this->dataMapper->buildQueryParameters($conditions, $parameters));
 
-            $this->dataMapper->persist($query, $conditions);
+            /* $this->dataMapper->persist($query, $conditions); */
 
             if ($this->dataMapper->numRows() > 0) {
                return $this->dataMapper->results();
@@ -167,7 +168,7 @@ class Crud implements CrudInterface
 
             $query = $this->queryBuilder->buildQuery($args)->updateQuery();
 
-            $this->dataMapper->persist($query, $fields);
+            $this->dataMapper->persist($query, $this->dataMapper->buildQueryParameters($fields));
 
             if ($this->dataMapper->numRows() == 1) {
                  return true;
@@ -197,7 +198,7 @@ class Crud implements CrudInterface
 
             $query = $this->queryBuilder->buildQuery($args)->updateQuery();
 
-            $this->dataMapper->persist($query, $conditions);
+            $this->dataMapper->persist($query, $this->dataMapper->buildQueryParameters($conditions));
 
             if ($this->dataMapper->numRows() == 1) {
                 return true;
@@ -229,7 +230,7 @@ class Crud implements CrudInterface
 
             $query = $this->queryBuilder->buildQuery($args)->searchQuery();
 
-            $this->dataMapper->persist($query, $conditions);
+            $this->dataMapper->persist($query, $this->dataMapper->buildQueryParameters($conditions));
 
             if ($this->dataMapper->numRows() > 0) {
                 return $this->dataMapper->results();

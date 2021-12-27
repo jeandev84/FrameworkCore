@@ -4,6 +4,9 @@ declare(strict_types=1);
 namespace Framework\Router;
 
 
+use Framework\Router\Exception\RouterBadMethodCallException;
+use Framework\Router\Exception\RouterException;
+
 /**
  * @Router
  *
@@ -66,16 +69,16 @@ class Router implements RouterInterface
                 if (\is_callable([$controllerObject, $action])) {
                     $controllerObject->{$action}();
                 }else {
-                    throw new \Exception();
+                    throw new RouterBadMethodCallException();
                 }
 
             } else {
 
-                throw new \Exception();
+                throw new RouterException();
             }
 
         } else {
-            throw new \Exception();
+            throw new RouterException();
         }
     }
 

@@ -182,14 +182,14 @@ class QueryBuilder implements QueryBuilderInterface
 
     public function searchQuery(): string
     {
-
+        return '';
     }
 
 
 
     public function rawQuery(): string
     {
-        // TODO: Implement rawQuery() method.
+        return '';
     }
 
 
