@@ -34,7 +34,7 @@ class EntityManager implements EntityManagerInterface
     /**
      * @inheritDoc
     */
-    public function getCrud(): object
+    public function getCrud(): CrudInterface
     {
        return $this->crud;
     }

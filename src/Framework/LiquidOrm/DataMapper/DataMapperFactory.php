@@ -29,8 +29,7 @@ class DataMapperFactory
      */
     public function create(string $databaseConnectionString, string $dataMapperEnvironmentConfiguration): DataMapperInterface
      {
-          $credentials = (new $dataMapperEnvironmentConfiguration([]))
-                         ->getDatabaseCredentials('mysql');
+          $credentials = (new $dataMapperEnvironmentConfiguration([]))->getDatabaseCredentials('mysql');
 
           $databaseConnectionObject = new $databaseConnectionString($credentials);
 

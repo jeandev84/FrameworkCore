@@ -65,7 +65,7 @@ interface CrudInterface
      * Update method which update 1 or more rows of data with in the storage table
      *
      * @param array $fields
-     * @param string $primaryKey
+     * @param string $primaryKey Example: 'id'
      * @return bool
     */
     public function update(array $fields = [], string $primaryKey = 'id'): bool;

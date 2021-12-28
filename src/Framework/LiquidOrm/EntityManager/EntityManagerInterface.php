@@ -12,7 +12,7 @@ namespace Framework\LiquidOrm\EntityManager;
 interface EntityManagerInterface
 {
      /**
-      * @return object
+      * @return CrudInterface
      */
-     public function getCrud(): object;
+     public function getCrud(): CrudInterface;
 }
